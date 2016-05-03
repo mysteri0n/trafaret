@@ -872,12 +872,16 @@ class Key(object):
     """
     __slots__ = ['name', 'to_name', 'default', 'optional', 'trafaret']
 
-    def __init__(self, name, default=_empty, optional=False, to_name=None, trafaret=None):
+    def __init__(self, name, default=_empty, optional=False, to_name=None, trafaret=None, description=''):
         self.name = name
         self.to_name = to_name
         self.default = default
         self.optional = optional
         self.trafaret = trafaret or Any()
+        self.description = description
+
+    # def __repr__(self):
+    #     return "<Key {}>".format(self.name)
 
     def __call__(self, data):
         if self.name in data or self.default is not _empty:
